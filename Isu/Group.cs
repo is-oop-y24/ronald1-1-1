@@ -16,7 +16,7 @@ namespace Isu
 
         public Group(string groupName, List<Student> students)
         {
-            if (groupName[0] != 'M' || groupName.Length != 5 || groupName[1] != '3')
+            if (!(groupName[0] >= 'A' && groupName[0] <= 'Z') || groupName.Length != 5 || groupName[1] != '3')
             {
                 throw new IsuException("Invalid group name:" + groupName);
             }
@@ -75,6 +75,11 @@ namespace Isu
         public void RemoveStudent(Student student)
         {
             _students.Remove(student);
+        }
+
+        public char GetFaculty()
+        {
+            return _groupName[0];
         }
     }
 }

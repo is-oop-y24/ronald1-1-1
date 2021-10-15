@@ -40,7 +40,6 @@ namespace Isu.Tests
         [Test]
         public void CreateGroupWithInvalidName_ThrowException()
         {
-            Assert.Catch<IsuException>(() => _isuService.AddGroup("A3123") );
             Assert.Catch<IsuException>(() => _isuService.AddGroup("M1343") );
             Assert.Catch<IsuException>(() => _isuService.AddGroup("M31d4") );
             Assert.Catch<IsuException>(() => _isuService.AddGroup("M341") );
