@@ -23,5 +23,10 @@
             get => _group;
             set { _group = value; }
         }
+
+        public override int GetHashCode()
+        {
+            return _id;
+        }
     }
 }
