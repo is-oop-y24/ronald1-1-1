@@ -3,19 +3,29 @@ using System.Collections.Generic;
 
 namespace Backups
 {
-    public class RestorePoint
+    [Serializable]
+    public class RestorePoint : IComparable
     {
-        private DateTime _dateTime;
-        private List<Storage> _storages;
-        private string _name;
-        private string _path;
-
         public RestorePoint(DateTime dateTime, List<Storage> storages, string name, string path)
         {
-            _dateTime = dateTime;
-            _storages = storages;
-            _name = name;
-            _path = path;
+            DateTime = dateTime;
+            Storages = storages;
+            Name = name;
+            Path = path;
+        }
+
+        public List<Storage> Storages { get; }
+
+        public string Name { get; }
+
+        public string Path { get; }
+
+        public string FullName => Path + "\\" + Name;
+        public DateTime DateTime { get; }
+        public BackupJob BackupJob { get; set; }
+        public int CompareTo(object obj)
+        {
+            return DateTime.CompareTo(((RestorePoint)obj).DateTime);
         }
     }
 }

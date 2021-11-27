@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Backups
 {
+    [Serializable]
     public class Storage
     {
         private string _path;

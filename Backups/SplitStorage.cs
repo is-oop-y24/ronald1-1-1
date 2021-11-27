@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Backups
 {
+    [Serializable]
     public class SplitStorage : IStorageAlgorithm
     {
         public RestorePoint CreateRestorePoint(List<Storage> jobObject, IRepository repository, string path, string name)
@@ -12,7 +13,7 @@ namespace Backups
                 repository.CreateArchive(new List<Storage>() { storage }, path + "\\" + name, storage.Name + ".zip");
             }
 
-            return new RestorePoint(DateTime.Now, jobObject, name, path);
+            return new RestorePoint(DateTime.Now, new List<Storage>(jobObject), name, path);
         }
     }
 }
