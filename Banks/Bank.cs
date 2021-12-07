@@ -4,29 +4,22 @@ namespace Banks
 {
     public class Bank
     {
-        private string _name;
         private List<Client> _clients;
 
-        public Bank(string name, float commission, float payPercent, float creditLimit, float notConfirmedLimit)
+        public Bank()
         {
             _clients = new List<Client>();
-            _name = name;
-            Commission = commission;
-            PayPercent = payPercent;
-            CreditLimit = creditLimit;
-            NotConfirmedLimit = notConfirmedLimit;
         }
 
-        public float Commission { get; }
+        public float Commission { get; set; }
 
-        public float PayPercent { get; }
-        public float CreditLimit { get; }
+        public float PayPercent { get; set; }
+        public float CreditLimit { get; set; }
 
-        public float NotConfirmedLimit { get; }
+        public float NotConfirmedLimit { get; set; }
+        public string Name { get; set; }
 
         public List<Client> Clients => new List<Client>(_clients);
-
-        public string Name { get; }
 
         public void AddAccountToClient(Client client, IAccount account)
         {

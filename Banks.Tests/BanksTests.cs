@@ -6,11 +6,14 @@ namespace Banks.Tests
     public class BanksTests
     {
         private CentralBank _centralBank;
+        private IAccountHandler _handler;
         
         [SetUp]
         public void Setup()
         {
             _centralBank = new CentralBank();
+            _handler = new CreditHandler();
+            _handler.SetNext(new DebitHandler()).SetNext(new DepositHandler());
         }
 
         [Test]
@@ -25,13 +28,13 @@ namespace Banks.Tests
             _centralBank.AddClient(client2);
             _centralBank.AddClientToBank(client2, bank);
             DebitAccount account2 = _centralBank.AddDebitAccount(client1);
-            account2.Replenishment(1000);
-            account1.Replenishment(1000);
+            _handler.Replenishment(1000, account2);
+            _handler.Replenishment(1000, account1);
             _centralBank.SkipDays(30);
             Assert.True(Math.Abs(account1.Money - 1003) < 0.01);
-            account1.Withdrawal(103);
+            _handler.Withdrawal(103, account1);
             Assert.True(Math.Abs(account1.Money - 900) < 0.01);
-            account2.Transaction(account1, 103);
+            _handler.Transaction(103, account2, account1);
             Assert.True(Math.Abs(account1.Money - 1003) < 0.01);
             Assert.True(Math.Abs(account2.Money - 900) < 0.01);
         }
@@ -48,15 +51,14 @@ namespace Banks.Tests
             _centralBank.AddClient(client2);
             _centralBank.AddClientToBank(client2, bank);
             DepositAccount account2 = _centralBank.AddDepositAccount(client1, 40);
-            account2.Replenishment(1000);
-            account1.Replenishment(1000);
+            _handler.Replenishment(1000, account2);
+            _handler.Replenishment(1000, account1);
             _centralBank.SkipDays(35);
-            Console.WriteLine(account1.Money);
             Assert.True(Math.Abs(account1.Money - 1003) < 0.01);
-            account1.Withdrawal(103);
+            _handler.Withdrawal(103, account1);
             Assert.True(Math.Abs(account1.Money - 900) < 0.01);
-            Assert.False(account2.Transaction(account1, 103));
-            Assert.False(account2.Withdrawal( 103));
+            Assert.False(_handler.Transaction(103, account2, account1));
+            Assert.False(_handler.Withdrawal(103, account2));
             _centralBank.SkipDays(5);
             Assert.True(Math.Abs(account2.Money - 1004) < 0.01);
         }
@@ -69,13 +71,13 @@ namespace Banks.Tests
             _centralBank.AddClient(client1);
             _centralBank.AddClientToBank(client1, bank);
             CreditAccount account1 = _centralBank.AddCreditAccount(client1);
-            account1.Replenishment(1000);
+            _handler.Replenishment(1000, account1);
             _centralBank.SkipDays(30);
             Assert.True(Math.Abs(account1.Money - 1000) < 0.01);
-            account1.Withdrawal(2000);
+            _handler.Withdrawal(2000, account1);
             _centralBank.SkipDays(30);
             Assert.True(Math.Abs(account1.Money - (-1030)) < 0.01);
-            Assert.False(account1.Withdrawal(2000f));
+            Assert.False(_handler.Withdrawal(2000f, account1));
         }
 
         [Test]

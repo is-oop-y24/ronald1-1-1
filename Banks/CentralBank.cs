@@ -24,7 +24,13 @@ namespace Banks
         public List<Transaction> Transactions => new List<Transaction>(_transactions);
         public Bank AddBank(string name, float commissionPercent, float payPercent, float creditLimit, float notConfirmedLimit)
         {
-            var bank = new Bank(name, commissionPercent, payPercent, creditLimit, notConfirmedLimit);
+            IBuilder builder = new BankBuilder();
+            builder.SetName(name);
+            builder.SetCommission(commissionPercent);
+            builder.SetPayPercent(payPercent);
+            builder.SetCreditLimit(creditLimit);
+            builder.SetNotConfirmedLimit(notConfirmedLimit);
+            Bank bank = builder.GetResult();
             _banks.Add(bank);
             return bank;
         }
