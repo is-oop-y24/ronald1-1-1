@@ -6,6 +6,7 @@ using Backups.Tools;
 
 namespace Backups
 {
+    [Serializable]
     public class FileSystem : IRepository
     {
         private string _rootPath;
@@ -23,6 +24,7 @@ namespace Backups
             }
         }
 
+        public string RootPath => _rootPath;
         public Storage PutFile(string oldPath, string newPath)
         {
             File.Copy(oldPath, newPath);
@@ -39,6 +41,11 @@ namespace Backups
         {
             var fileInfo = new FileInfo(path);
             return new Storage(fileInfo.FullName, fileInfo.Name);
+        }
+
+        public void DeleteDirectory(string path)
+        {
+            Directory.Delete(_rootPath + path, true);
         }
 
         public void CreateArchive(List<Storage> storages, string path, string name)
