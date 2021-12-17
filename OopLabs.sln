@@ -32,6 +32,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banks", "Banks\Banks.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banks.Tests", "Banks.Tests\Banks.Tests.csproj", "{3845CD18-DD04-4B8F-B0DC-74EF9354F6DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsAPI", "ReportsAPI\ReportsAPI.csproj", "{CDF7EA98-C8EE-4BBB-A139-4BECC4C395D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportsDAL", "ReportsDAL\ReportsDAL.csproj", "{9709EF48-1066-4682-9FFC-6D7E08D97BD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +90,18 @@ Global
 		{3845CD18-DD04-4B8F-B0DC-74EF9354F6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3845CD18-DD04-4B8F-B0DC-74EF9354F6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3845CD18-DD04-4B8F-B0DC-74EF9354F6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF7EA98-C8EE-4BBB-A139-4BECC4C395D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF7EA98-C8EE-4BBB-A139-4BECC4C395D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF7EA98-C8EE-4BBB-A139-4BECC4C395D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF7EA98-C8EE-4BBB-A139-4BECC4C395D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9709EF48-1066-4682-9FFC-6D7E08D97BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9709EF48-1066-4682-9FFC-6D7E08D97BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9709EF48-1066-4682-9FFC-6D7E08D97BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9709EF48-1066-4682-9FFC-6D7E08D97BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83FA223-F90B-402D-8B40-0D20AA9C1170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83FA223-F90B-402D-8B40-0D20AA9C1170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83FA223-F90B-402D-8B40-0D20AA9C1170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83FA223-F90B-402D-8B40-0D20AA9C1170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
